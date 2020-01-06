@@ -16,7 +16,7 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        return Pedido::all();
+        return Pedido::with('pizza')->get();
     }
 
     /**
@@ -43,7 +43,8 @@ class PedidoController extends Controller
      */
     public function show($phone)
     {
-        return Pedido::where('customer_phone', '=', $phone)->firstOrFail();
+        //Irá trazer todos os pedidos do cliente com o telefone informado
+        return Pedido::with('pizza')->where('customer_phone', '=', $phone)->get();
     }
 
 }
