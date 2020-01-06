@@ -27,7 +27,12 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        return Pedido::create($request->only(['pizza_id','customer_name','customer_phone', 'customer_address']));
+        try {
+            return Pedido::create($request->only(['pizza_id','customer_name','customer_phone', 'customer_address']));
+        } catch (\Throwable $e) {
+            abort(400, 'Error while creating an Order.['.$e->getMessage().']');
+        }
+
     }
 
     /**

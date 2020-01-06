@@ -12,6 +12,10 @@ class Pedido extends Model
     protected $fillable = [
         'pizza_id', 'customer_name', 'customer_phone', 'customer_address',
     ];
+
+    public function pizza(){
+        return $this->belongsTo(Pizza::class);
+    }
 }
 
 

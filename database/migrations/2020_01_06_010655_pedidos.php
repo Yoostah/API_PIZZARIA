@@ -14,13 +14,15 @@ class Pedidos extends Migration
     public function up()
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('pizza_id');
+            $table->increments('id');
+            $table->integer('pizza_id')->unsigned();
             $table->string('customer_name');
             $table->string('customer_phone');
             $table->string('customer_address');
-
             $table->timestamps();
+
+
+            $table->foreign('pizza_id')->references('id')->on('pizzas');
         });
     }
 
