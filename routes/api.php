@@ -14,4 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::apiResource('pizza', 'api\PizzaController');
-
+Route::apiResource('order', 'api\PedidoController');
